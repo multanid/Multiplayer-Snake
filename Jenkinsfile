@@ -1,4 +1,4 @@
-node ('ubuntu-app-agent') {
+node ('ubuntu-snake-app-agent') {
   
     def app
 
