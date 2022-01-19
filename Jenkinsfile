@@ -24,7 +24,7 @@ node ('ubuntu-app-agent') {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-      docker.withRegistry('https://registry.hub.docker.com', 'dockertest') {
+      docker.withRegistry('https://registry.hub.docker.com', 'docker') {
       app.push("latest") 
      
       }
