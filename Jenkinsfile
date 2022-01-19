@@ -1,4 +1,4 @@
-node ('master'){
+node ('master'). {
   
     //def app
 
@@ -27,7 +27,7 @@ node ('master'){
       /* docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
       app.push("latest") */
      
-      }
+     // }
          }
 
     stage('Pull-image-server') {
