@@ -1,6 +1,6 @@
-node ('master') {
+node ('ubuntu-app-agent') {
   
-    //def app
+    def app
 
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -10,11 +10,11 @@ node ('master') {
      
     stage('Build-and-Tag') {
       
-      sh 'echo Build-and-Tag'
+     // sh 'echo Build-and-Tag'
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-     //   app = docker.build("multanid/snake")
+      app = docker.build("multanid/snake")
     }
   
   stage('Post-to-dockerhub') {
@@ -24,18 +24,16 @@ node ('master') {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-      /* docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-      app.push("latest") */
+      docker.withRegistry('https://registry.hub.docker.com', 'dockertest') {
+      app.push("latest") 
      
-     // }
+      }
          }
 
     stage('Pull-image-server') {
       
-      sh 'echo Pull-Image-Server'
-
-      //  sh "docker-compose down"
-      //  sh "docker-compose up -d"			
+      sh "docker-compose down"
+      sh "docker-compose up -d"			
       }
    
 }
