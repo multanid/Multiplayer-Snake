@@ -14,7 +14,7 @@ node ('Ubuntu-snake-app-agent') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-      app = sudo docker.build("multanid/snake")
+      app = docker.build("multanid/snake")
     }
   
   stage('Post-to-dockerhub') {
